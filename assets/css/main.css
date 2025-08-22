@@ -1,19 +1,24 @@
-* {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      --inter: "Inter", sans-serif;
-      --Green: #008A3E;
-      --Grey-Background: rgba(245, 245, 245, 0.70);
-
-       --primary-green: #00875a;
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --inter: "Inter", sans-serif;
+    --Green: #008A3E;
+    --Grey-Background: rgba(245, 245, 245, 0.70);
+    --primary-green: #00875a;
     --light-green: #e5f3ee;
     --dark-text: #1a1a1a;
     --light-text: #6b7280;
     --border-color: #e5e7eb;
     --background-grey: #f9fafb;
     --white: #ffffff;
+
 }
+
 body {
       font-family: var(--inter);
       line-height: 1.6;
@@ -24,7 +29,92 @@ body {
         margin: auto;
         
 }
+/* Top Parts Start */
+.checkout-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    align-items: center;
+    margin-bottom: 1rem;
+    height: 64px;
+}
 
+
+.trust-badge-top {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--Black, #0F0F11);
+    text-align: right;
+    font-family: var(--inter);
+    font-style: normal;
+    font-weight: 400;
+}
+.trust-badge-top svg { color: #f9b115; }
+
+.payment-logos { display: flex; gap: 1rem; justify-content: right; }
+
+.ssl-bar {
+    background-color: #111827;
+    color: var(--white);
+    padding-block: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    
+    & span{
+        color: var(--White, #FEFEFE);
+        text-align: center;
+        font-family: var(--inter);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+    }
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding-block-start: 1.4375rem;
+    padding-block-end: 2rem;
+}
+
+
+
+.step.active {
+    color: var(--Green, #008A3E);
+}
+
+.step-number {
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #000;
+
+    color: var(--Black, #0F0F11);
+    font-family: var(--inter);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 21px */
+}
+
+.step.active .step-number {
+    background-color: var(--white, #ffffff);;
+    color: var(--Green, #008A3E);
+    border: 1px solid var(--Green, #008A3E);
+}
+/* Top Parts End */
 /* Reviewer Start */
 .reviews-container {
       background: #fff;
@@ -178,8 +268,344 @@ body {
       }
     }
 /* Reviewer ENd */
-/* CheckBox Design Start */
-/* CheckBox CSS Start*/
+/* Form Start */
+.form-group {
+      position: relative;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+    input, select {
+      width: 100%;
+      padding: 14px 11px 8px;
+      height: 56px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      background: none;
+    }
+   
+    .input_label {
+      position: absolute;
+      top: 18px;
+      left: 14px;
+      font-size: 16px;
+      color: #999;
+      pointer-events: none;
+      transition: 0.2s ease all;
+      background: transparent;
+    }
+    input:focus + label,
+    input:not(:placeholder-shown) + label,
+    select:focus + label,
+    select:not([value=""]) + label {
+      top: 4px;
+      left: 10px;
+      background: #fff;
+      padding: 0 6px;
+      font-size: 13px;
+      /* color: #4a90e2; */
+    }
+
+    
+
+.form-block {
+    margin-bottom: 2.5rem;
+}
+
+.form-block h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+}
+
+input#newsletter + label {
+    color: var(--Black, #0F0F11);
+    font-family: var(--inter);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    
+}
+
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 2px rgba(0, 135, 90, 0.2);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.phone-code { grid-column: 1 / 2; }
+.phone-number { grid-column: 2 / 3; }
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '▾';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--light-text);
+}
+
+.form-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+    .row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .one-third {
+      flex: 1 1 30%;
+    }
+    .two-third {
+      flex: 1 1 65%;
+    }
+
+  
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+      .one-third, .two-third {
+        flex: 1 1 100%;
+      }
+    }
+
+    .form-actions .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+   }
+
+.form-actions .checkbox-group input { width: 1.25em; height: 1.25em; }
+.form-actions .checkbox-group label { margin: 0; font-size: 0.9rem; }
+
+.continue-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.continue-btn:hover { background-color: #006a47; }
+
+.disclaimer {
+    font-size: 0.75rem;
+    color: var(--light-text);
+    text-align: center;
+    margin-top: 1rem;
+}
+.disclaimer a { color: var(--Green); font-weight: 500; text-decoration: none; }
+.disclaimer a:hover { text-decoration: underline; }
+button.continue-btn {
+color: var(--White, #FEFEFE);
+text-align: center;
+font-family: var(--inter);
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 5px;
+}
+
+.transaction_sure {
+    font-size: 0.75rem;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--Dark-Grey, #6D6C71);
+    text-align: center;
+    font-family: var(--inter);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+/* Form End */
+/* Shipping Options Start */
+.shipping-options-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.shipping-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.radio-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    margin-right: 1rem;
+    display: grid;
+    place-items: center;
+    transition: all 0.2s ease-in-out;
+    flex-shrink: 0;
+}
+
+.radio-check svg {
+    width: 12px;
+    height: 12px;
+    color: #fff; /* Grey color for checkmark */
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1; /* Visible by default */
+}
+
+/* STYLES FOR THE SELECTED OPTION */
+.shipping-option.selected {
+    border-color: var(--primary-green);
+    background-color: var(--light-green);
+}
+
+.shipping-option.selected .radio-check {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.shipping-option.selected .radio-check svg {
+    opacity: 1; /* Hide the checkmark to make the circle solid */
+}
+
+.shipping-details p {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.shipping-details small {
+    color: var(--light-text);
+}
+
+.shipping-price {
+    margin-left: auto;
+    font-weight: 600;
+    font-size: 1rem;
+}
+/* Shipping Options End */
+/* summary Start */
+
+.summary-box {
+    background-color: inherit;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.summary-box h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; }
+
+.cart-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+
+.item-image-wrapper { position: relative; }
+.item-image-wrapper img { width: 80px; height: 80px; border-radius: 2px; }
+.item-quantity {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--Black,#000);
+    color: var(--white);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+.badge {
+    display: flex;
+    padding: 4px 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--Input-Borders, #D7D9DF);
+    background: var(--Grey-Background, rgba(245, 245, 245, 0.70));
+    color: var(--Dark-Grey, #6D6C71);
+    font-family: var(--inter);
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 12px */
+    text-transform: uppercase;
+    margin: auto;
+    width: 25%;
+}
+.item-details .item-name { font-weight: 500; }
+.item-details .item-stock { font-size: 0.875rem; color: var(--light-text); }
+.item-price { margin-left: auto; font-weight: 600; }
+
+.price-breakdown {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    color: var(--light-text);
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.guarantee-box { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 1.5rem; padding: 1rem;}
+.guarantee-item { display: flex; align-items: flex-start; gap: 1rem; }
+.guarantee-item img { width: 40px; height: 40px; }
+.guarantee-item h4 { font-weight: 600; margin-bottom: 0.25rem; }
+.guarantee-item p { font-size: 0.875rem; color: var(--light-text); }
+
+.stars { color: #f9b115; font-size: 1.2rem; }
+
+/* summary End */
+/* CheckBox Start*/
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
     .checkbox-group input[type=checkbox] {
       --active: #038759;
@@ -277,9 +703,16 @@ body {
   .checkbox-group *:after {
     box-sizing: inherit;
   }
-/* CheckBox CSS End*/
-/* CheckBox Design End */
+
+/* CheckBox End*/
 /* Notification Start */
+.live-notification {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
  #sales-notification-container {
           position: fixed;
           bottom: 20px;
@@ -346,3 +779,46 @@ body {
           to { opacity: 1; transform: translateX(0); }
         }
 /* Notification End */
+
+/* Thank you Page Start */
+.thankyou-container {
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* outer circle */
+    .circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #a3f7a3; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+    }
+/* inner circle */
+    .circle-inner {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #27d527; 
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+    }
+/* Thank you Page End */
