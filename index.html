@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout</title>
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/checkout.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/form.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="checkout-header top_padding">
+            <div class="top_item">
+                <p class="trust-badge-top">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+                            Trusted by 2000+ customers
+                        </p>
+                    </div>
+            <div class="top_item"><h1>Secure Checkout</h1></div>
+            <div class="top_item">
+                 <div class="payment-logos">
+                            <img src="./assets/images/payment/visa.svg" alt="" srcset="">
+                            <img src="./assets/images/payment/card.svg" alt="" srcset="" width="32px" height="32px">
+                        </div>
+            </div>
+                        
+                        
+                       
+        </div>
+        <div class="ssl-bar top_padding">
+               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="17" viewBox="0 0 14 17" fill="none">
+                    <path d="M12 6.00004V5.00002C12 2.24315 9.75684 0 7 0C4.24316 0 2.00003 2.24315 2.00003 5.00002V6.00004C0.895466 6.00004 0 6.89541 0 8.00009V15.0001C0.000106249 16.1045 0.895466 17 2.00003 17H12C13.1045 17 14 16.1045 14 14.9999V7.99999C13.9999 6.89541 13.1045 6.00004 12 6.00004ZM4.00006 5.00002C4.00006 3.34571 5.3457 2.00005 7 2.00005C8.65429 2.00005 9.99994 3.34571 9.99994 5.00002V6.00004H4.00006V5.00002ZM7.99991 12C7.99991 12.5523 7.55217 13 6.99989 13C6.44761 13 5.99988 12.5523 5.99988 12V9.99993C5.99988 9.44764 6.44761 8.99991 6.99989 8.99991C7.55217 8.99991 7.99991 9.44764 7.99991 9.99993V12Z" fill="#FEFEFE"/>
+              </svg>
+               <span>SSL Safe Payment</span>
+        </div>
+        <div class="progress-steps top_padding">
+                <div class="step active">
+                    <span class="step-number">1</span> Shipping Details
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span> Payment Method
+                </div>
+            </div>
+    </div>
+    <section class="checkout-container container top_padding">
+      <div class="payment_form">  
+        <!-- Left Column: Form -->
+            <div class="form-section">
+              <form action="">
+                <div class="form-block">
+                      <div id="customerInformation">
+                       <h2>Shipping Details</h2>
+                        <div class="form-group">
+                          <input type="email" id="email" placeholder=" " required="" autocomplete="off">
+                          <label for="email" class="input_label">E-mail</label>
+                        </div>
+
+                        <div class="row">
+                          <div class="form-group">
+                            <input type="text" id="fname" placeholder=" " required="">
+                            <label for="fname" class="input_label">First Name</label>
+                          </div>
+
+                          <div class="form-group">
+                            <input type="text" id="lname" placeholder=" " required="">
+                            <label for="lname" class="input_label">Last Name</label>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" id="address" placeholder=" " required="">
+                          <label for="address" class="input_label">Address</label>
+                        </div>
+
+                        <div class="row">
+                          <div class="form-group">
+                            <input type="text" id="city" placeholder=" " required="">
+                            <label for="city" class="input_label">City</label>
+                          </div>
+
+                          <div class="form-group">
+                            <input type="text" id="zip" placeholder=" " required="">
+                            <label for="zip" class="input_label">ZIP Code</label>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <select id="country" required="">
+                            <option value="" hidden=""></option>
+                            <option value="Bulgaria" selected="">Bulgaria</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="Germany">Germany</option>
+                          </select>
+                          <label for="country" class="input_label">Country</label>
+                        </div>
+
+                        <div class="row">
+                          <div class="form-group one-third">
+                            <select id="code" required="">
+                              <option value="" hidden=""></option>
+                              <option value="+359" selected="">(+359) Bulgaria</option>
+                              <option value="+1">(+1) USA</option>
+                              <option value="+44">(+44) UK</option>
+                              <option value="+49">(+49) Germany</option>
+                            </select>
+                            <label for="code" class="input_label">Code</label>
+                          </div>
+
+                          <div class="form-group two-third">
+                            <input type="tel" id="phone" placeholder=" " required="">
+                            <label for="phone" class="input_label">Phone Number</label>
+                          </div>
+                        </div>
+
+                      </div>
+                      <!-- Payment Part -->
+                    
+                </div>
+
+                <div class="form-block">
+                    <h2>Shipping Options</h2>
+                    <div class="shipping-options-wrapper">
+                        <div class="shipping-option">
+                            <div class="radio-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+                            </div>
+                            <div class="shipping-details">
+                                <p>Standard shipping</p>
+                                <small>5+ Working days</small>
+                            </div>
+                            <div class="shipping-price">Free</div>
+                        </div>
+                        <div class="shipping-option selected">
+                            <div class="radio-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+                            </div>
+                            <div class="shipping-details">
+                                <p>Faster shipping</p>
+                                <small>3-5 Working days</small>
+                            </div>
+                            <div class="shipping-price">$9.99</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="newsletter">
+                        <label for="newsletter">Sign up for exclusive offers, news and communication services.</label>
+                    </div>
+                    <button type="submit" class="continue-btn">Continue</button>
+                    <p class="disclaimer">
+                        By clicking "Continue", I confirm that I have read, consented to, and accepted the <a href="#">Terms & Conditions</a>, the <a href="#">Privacy Policy</a>, and that I am at least 18 years of age.
+                    </p>
+                </div>
+              </form>
+            </div>
+
+            <!-- Right Column: Cart Summary -->
+            <div class="cart-summary">
+                <div class="summary-box">
+                    <h3>Your Cart</h3>
+                    <div class="cart-item">
+                        <div class="item-image-wrapper">
+                            <img src="./assets/images/product/product.png" alt="Orange sneakers">
+                            <span class="item-quantity">1</span>
+                        </div>
+                        <div class="item-details">
+                            <p class="item-name">Product name</p>
+                            <p class="item-stock">Only 3 left in stock</p>
+                        </div>
+                        <p class="item-price">$340.01</p>
+                    </div>
+                    <div class="price-breakdown">
+                        <div class="price-row">
+                            <span>Subtotal:</span>
+                            <span>$340.01</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Shipping:</span>
+                            <span id="shipping-cost">$9.99</span>
+                        </div>
+                    </div>
+                    <div class="total-price">
+                        <span>Total:</span>
+                        <span class="total-amount" id="total-amount">$349.00</span>
+                    </div>
+                </div>
+                <div class="guarantee-box">
+                    <div class="guarantee-item">
+                        <img src="./assets/images/review/review-1.svg" alt="30 Day Money Back Guarantee">
+                        <div>
+                            <h4>30 day money back guarantee</h4>
+                            <p>Not happy? No problem. Get your money back within 30 days.</p>
+                        </div>
+                    </div>
+                    <div class="guarantee-item">
+                        <img src="./assets/images/review/review-2.svg" alt="Safe and Secure Payment">
+                        <div>
+                            <h4>Safe and secure payment</h4>
+                            <p>Shop with confidence—your payment is always safe with us.</p>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="reviews-wrapper">
+                        <div class="reviews" id="reviews">
+                        <div class="review">
+                            <div class="review-left">
+                            
+                            <div class="name">Ga**by</div>
+                            <div class="flag">🇧🇬</div>
+                            <div class="badge">CUSTOMER</div>
+                            </div>
+                            <div class="review-right">
+                            <div class="stars">★★★★★</div>
+                            <div class="text">The best purchase I made this year. The product quality exceeded my expectations and the delivery was incredibly fast.</div>
+                            <div class="time">26 minutes ago</div>
+                            </div>
+                        </div>
+
+                        <div class="review">
+                            <div class="review-left">
+                            
+                            <div class="name">Em**el</div>
+                            <div class="flag">🇦🇪</div>
+                            <div class="badge">CUSTOMER</div>
+                            </div>
+                            <div class="review-right">
+                            <div class="stars">★★★★★</div>
+                            <div class="text">
+                                Never have I spent my money that well. Great service and delivery...Guess I was lucky this time! See you next time
+                            </div>
+                            <div class="time">56 minutes ago</div>
+                            </div>
+                        </div>
+
+                        <div class="review">
+                            <div class="review-left">
+                            
+                            <div class="name">Ko**st</div>
+                            <div class="flag">🇬🇧</div>
+                            <div class="badge">CUSTOMER</div>
+                            </div>
+                            <div class="review-right">
+                            <div class="stars">★★★★★</div>
+                            <div class="text">
+                                I received my product yesterday. Fast and outstanding customer service! Thanks a lot &lt;3
+                            </div>
+                            <div class="time">2 hours ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="review">
+                            <div class="review-left">
+                            
+                            <div class="name">Sa**ah</div>
+                            <div class="flag">🇺🇸</div>
+                            <div class="badge">VIP CLIENT</div>
+                            </div>
+                            <div class="review-right">
+                            <div class="stars">★★★★★</div>
+                            <div class="text">
+                                This is my third purchase from this store and I'm consistently impressed by the quality and customer service.
+                            </div>
+                            <div class="time">5 hours ago</div>
+                            </div>
+                        </div>
+                        
+                        </div>
+                       
+                </div>
+                
+                <div class="live-notification">
+                     <div id="sales-notification-container"></div>
+                </div>
+
+            </div>
+        </div> 
+    </section>
+
+    <!-- SCRIPT FOR INTERACTIVITY -->
+    <script>
+        
+    </script> 
+<script src="./assets/js/app.js"></script>
+</body>
+</html>

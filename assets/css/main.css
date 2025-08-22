@@ -1,0 +1,348 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      --inter: "Inter", sans-serif;
+      --Green: #008A3E;
+      --Grey-Background: rgba(245, 245, 245, 0.70);
+
+       --primary-green: #00875a;
+    --light-green: #e5f3ee;
+    --dark-text: #1a1a1a;
+    --light-text: #6b7280;
+    --border-color: #e5e7eb;
+    --background-grey: #f9fafb;
+    --white: #ffffff;
+}
+body {
+      font-family: var(--inter);
+      line-height: 1.6;
+      background: #ffffff;
+}
+.container{
+        max-width: 90rem;
+        margin: auto;
+        
+}
+
+/* Reviewer Start */
+.reviews-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .reviews-wrapper {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 220px;
+    }
+    
+    .reviews {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      height: 100%;
+    }
+    
+     .review {
+      display: flex;
+      gap: 20px;
+      padding: 15px;
+      flex: 0 0 100%;
+      width: 100%;
+      box-sizing: border-box;
+      height: 100%;
+      background-color: #ffff;
+      border-radius: 20px;
+    }
+    
+    .review-left {
+      min-width: 90px;
+      text-align: center;
+      position: relative;
+      padding-right: 20px;
+    }
+    
+    .review-left::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      right: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, #e6e6e6, transparent);
+    }
+    .name {
+      font-weight: bold;
+      font-size: 16px;
+      color: #2c3e50;
+    }
+    
+    .flag {
+      font-size: 22px;
+      margin: 5px 0;
+    }
+    
+    
+    
+    .review-right {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+      padding: 5px 0;
+    }
+    
+    .stars {
+      color: #FFD700;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .text {
+      font-size: 16px;
+      margin: 10px 0;
+      color: #34495e;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    
+    .time {
+      margin-top: 10px;
+      color: var(--Dark-Grey, #6D6C71);
+      font-family: var(--inter);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+    }
+    
+    .dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+      gap: 10px;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .dot.active {
+      background: #3498db;
+      transform: scale(1.2);
+    }
+    
+    .quote-icon {
+      position: absolute;
+      font-size: 80px;
+      color: rgba(52, 152, 219, 0.1);
+      z-index: 0;
+    }
+    
+    .quote-left {
+      top: 10px;
+      left: 10px;
+    }
+    
+    .quote-right {
+      bottom: 10px;
+      right: 10px;
+      transform: rotate(180deg);
+    }
+    
+    @media (max-width: 600px) {
+      .review {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      
+      .review-left::after {
+        display: none;
+      }
+      
+      .reviews-wrapper {
+        height: 320px;
+      }
+      
+      .review-right {
+        text-align: center;
+      }
+    }
+/* Reviewer ENd */
+/* CheckBox Design Start */
+/* CheckBox CSS Start*/
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    .checkbox-group input[type=checkbox] {
+      --active: #038759;
+      --active-inner: #fff;
+      --focus: 2px rgba(39, 94, 254, .3);
+      --border: #BBC1E1;
+      --border-hover: #038759;
+      --background: #fff;
+      --disabled: #F6F8FF;
+      --disabled-inner: #E1E6F9;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      height: 21px;
+      outline: none;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      margin: 0;
+      cursor: pointer;
+      border: 1px solid var(--bc, var(--border));
+      background: var(--b, var(--background));
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+    }
+    .checkbox-group input[type=checkbox]:after {
+      content: "";
+      display: block;
+      left: 0;
+      top: 0;
+      position: absolute;
+      transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+    }
+    .checkbox-group input[type=checkbox]:checked {
+      --b: var(--active);
+      --bc: var(--active);
+      --d-o: .3s;
+      --d-t: .6s;
+      --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+    }
+    .checkbox-group input[type=checkbox]:disabled {
+      --b: var(--disabled);
+      cursor: not-allowed;
+      opacity: 0.9;
+    }
+    .checkbox-group input[type=checkbox]:disabled:checked {
+      --b: var(--disabled-inner);
+      --bc: var(--border);
+    }
+    .checkbox-group input[type=checkbox]:disabled + label {
+      cursor: not-allowed;
+    }
+    .checkbox-group input[type=checkbox]:hover:not(:checked):not(:disabled) {
+      --bc: var(--border-hover);
+    }
+    .checkbox-group input[type=checkbox]:focus {
+      box-shadow: 0 0 0 var(--focus);
+    }
+    .checkbox-group input[type=checkbox]:not(.switch) {
+      width: 21px;
+    }
+    .checkbox-group input[type=checkbox]:not(.switch):after {
+      opacity: var(--o, 0);
+    }
+    .checkbox-group input[type=checkbox]:not(.switch):checked {
+      --o: 1;
+    }
+    .checkbox-group input[type=checkbox] + label {
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+
+    .checkbox-group input[type=checkbox]:not(.switch) {
+      border-radius: 7px;
+    }
+    .checkbox-group input[type=checkbox]:not(.switch):after {
+      width: 9px;
+      height: 12px;
+      border: 2px solid var(--active-inner);
+      border-top: 0;
+      border-left: 0;
+      left: 7px;
+      top: 3px;
+      transform: rotate(var(--r, 20deg));
+    }
+    .checkbox-group input[type=checkbox]:not(.switch):checked {
+      --r: 43deg;
+    }
+  }
+
+  .checkbox-group * {
+    box-sizing: inherit;
+  }
+  .checkbox-group *:before,
+  .checkbox-group *:after {
+    box-sizing: inherit;
+  }
+/* CheckBox CSS End*/
+/* CheckBox Design End */
+/* Notification Start */
+ #sales-notification-container {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 9999;
+        }
+
+        .sales-notification {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          background: #def3e5;
+          border-radius: 12px;
+          padding: 2rem 2rem;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          margin-top: 10px;
+          animation: slideIn 0.5s ease;
+          position: relative;
+          min-width: 300px;
+          max-width: 452px;
+          font-family: sans-serif;
+        }
+
+        .sales-notification img {
+          width: 40px;
+          height: 40px;
+          border-radius: 6px;
+          object-fit: cover;
+        }
+
+        .sales-notification .content {
+          flex: 1;
+          line-height: 1.4;
+          color: var(--Black, #0F0F11);
+          font-family: var(--inter);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+
+        }
+
+        .sales-notification .close-btn {
+          position: absolute;
+          top: 25px;
+          right: 8px;
+          cursor: pointer;
+          font-size: 16px;
+          color: #fff;
+          background-color: #888;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .sales-notification .close-btn:hover {
+          color: #000;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateX(-20px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+/* Notification End */

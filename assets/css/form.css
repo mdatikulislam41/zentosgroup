@@ -1,0 +1,61 @@
+.form-group {
+      position: relative;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+    input, select {
+      width: 100%;
+      padding: 14px 11px 8px;
+      height: 56px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      background: none;
+    }
+   
+    .input_label {
+      position: absolute;
+      top: 18px;
+      left: 14px;
+      font-size: 16px;
+      color: #999;
+      pointer-events: none;
+      transition: 0.2s ease all;
+      background: transparent;
+    }
+    input:focus + label,
+    input:not(:placeholder-shown) + label,
+    select:focus + label,
+    select:not([value=""]) + label {
+      top: 4px;
+      left: 10px;
+      background: #fff;
+      padding: 0 6px;
+      font-size: 13px;
+      /* color: #4a90e2; */
+    }
+
+    .row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .one-third {
+      flex: 1 1 30%;
+    }
+    .two-third {
+      flex: 1 1 65%;
+    }
+
+  
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+      .one-third, .two-third {
+        flex: 1 1 100%;
+      }
+    }
