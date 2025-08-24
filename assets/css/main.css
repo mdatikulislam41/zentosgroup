@@ -16,7 +16,7 @@
     --border-color: #e5e7eb;
     --background-grey: #f9fafb;
     --white: #ffffff;
-
+    font-size: 12px;
 }
 
 body {
@@ -27,7 +27,6 @@ body {
 .container{
         max-width: 90rem;
         margin: auto;
-        
 }
 /* Top Parts Start */
 .checkout-header {
@@ -38,8 +37,6 @@ body {
     margin-bottom: 1rem;
     height: 64px;
 }
-
-
 .trust-badge-top {
     display: flex;
     align-items: center;
@@ -85,9 +82,6 @@ body {
     padding-block-start: 1.4375rem;
     padding-block-end: 2rem;
 }
-
-
-
 .step.active {
     color: var(--Green, #008A3E);
 }

@@ -10,55 +10,6 @@
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/form.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
-    <!-- <style>
-        .country-select,state-select {position:relative;}
-
-  /* .dropdown-btn {width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; cursor:pointer; text-align:left; display:flex; align-items:center; gap:8px;} */
-  div#dropdownBtn {
-    width: 100%;
-    padding: 14px 11px 8px;
-    height: 56px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    font-size: 16px;
-    outline: none;
-    background: none;
-}
-div#dropdownList {
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
-    border: none;
-    border-radius: 4px;
-}
-  .dropdown-list {position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid #ccc; border-radius:6px; max-height:200px; overflow:auto; margin-top:4px; display:none; z-index:10;}
-  .dropdown-list input {width:95%; margin:6px auto; display:block; padding:6px; border:1px solid #ddd; border-radius:4px;}
-  .dropdown-item {padding:8px; display:flex; align-items:center; gap:8px; cursor:pointer;}
-  .dropdown-item:hover {
-    background: #038759;
-    color: #fff;
-}
-  .flag {font-size:20px;}
-    </style> -->
-
-<style>
-        .select-field {position:relative; margin-bottom:16px;}
- .dropdown-btn {
-    width: 100%;
-    padding: 14px 11px 8px;
-    height: 56px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    font-size: 0.875rem;
-    outline: none;
-    background: none;
-    color: var(--light-text);
-}
-  .dropdown-list {position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid #ccc; border-radius:6px; max-height:200px; overflow:auto; margin-top:4px; display:none; z-index:10; box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);}
-  .dropdown-list input {width:95%; margin:6px auto; display:block; padding:6px; border:1px solid #ddd; border-radius:4px;}
-  .dropdown-item {padding:8px; cursor:pointer;}
-  .dropdown-item:hover {background:#f0f0f0;}
-  .flag {font-size:20px;}
-    </style>
-
 </head>
 <body>
     <div class="container">
@@ -138,34 +89,24 @@ div#dropdownList {
                         </div>
 
                         <div class="form-group">
-                         <div class="select-field" id="countrySelect">
-  <label for="countryFilter" class="dropdown-btn" id="countryBtn">Select a country</label>
-  <div class="dropdown-list" id="countryList">
-    <input type="text" id="countryFilter" placeholder="Filter…">
-    <div id="countryOptions"></div>
-  </div>
-</div>
-                          <!-- <label for="country" class="input_label">Country</label> -->
-                        </div>
-                        <div class="form-group">
-                          <div class="select-field" id="stateSelectWrapper" style="display:none;">
-  <label for="stateFilter" class="dropdown-btn" id="stateBtn">Select a state</label>
-  <div class="dropdown-list" id="stateList">
-    <input type="text" id="stateFilter" placeholder="Filter…">
-    <div id="stateOptions"></div>
-  </div>
-</div>  
-
+                          <select id="country" required="">
+                            <option value="" hidden=""></option>
+                            <option value="Bulgaria" selected="">Bulgaria</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="Germany">Germany</option>
+                          </select>
+                          <label for="country" class="input_label">Country</label>
                         </div>
 
                         <div class="row">
                           <div class="form-group one-third">
                             <select id="code" required="">
                               <option value="" hidden=""></option>
-                              <!-- <option value="+359" selected="">(+359) Bulgaria</option>
+                              <option value="+359" selected="">(+359) Bulgaria</option>
                               <option value="+1">(+1) USA</option>
                               <option value="+44">(+44) UK</option>
-                              <option value="+49">(+49) Germany</option> -->
+                              <option value="+49">(+49) Germany</option>
                             </select>
                             <label for="code" class="input_label">Code</label>
                           </div>
@@ -343,236 +284,5 @@ div#dropdownList {
         </div> 
     </section>
     <script src="./assets/js/app.js"></script>
-<!-- <script>
-// ---------------- COUNTRY DROPDOWN ----------------
-const countries = [
-  { code:'BD', name:'Bangladesh', flag:'🇧🇩', pCode:"+880" },
-  { code:'IN', name:'India', flag:'🇮🇳', pCode:"+880" },
-  { code:'US', name:'United States', flag:'🇺🇸', pCode:"+880" },
-  { code:'GB', name:'United Kingdom', flag:'🇬🇧', pCode:"+880" },
-  { code:'CA', name:'Canada', flag:'🇨🇦', pCode:"+880" },
-  { code:'AU', name:'Australia', flag:'🇦🇺', pCode:"+880" },
-  { code:'BE', name:'Belgium', flag:'🇧🇪', pCode:"+880" },
-  { code:'BM', name:'Bermuda', flag:'🇧🇲', pCode:"+880" },
-  { code:'BT', name:'Bhutan', flag:'🇧🇹', pCode:"+880" },
-  { code:'BR', name:'Brazil', flag:'🇧🇷', pCode:"+880" },
-];
-
-const countryBtn = document.getElementById('countryBtn');
-const countryList = document.getElementById('countryList');
-const countryOptionsDiv = document.getElementById('countryOptions');
-const countryFilter = document.getElementById('countryFilter');
-const stateSelectWrapper = document.getElementById('stateSelectWrapper');
-
-function renderCountryOptions(list){
-  countryOptionsDiv.innerHTML = '';
-  list.forEach(c => {
-    const div = document.createElement('div');
-    div.className = 'dropdown-item';
-    div.innerHTML = `<span class="flag">${c.flag}</span> ${c.name}`;
-    div.onclick = () => {
-      countryBtn.innerHTML = `<span class="flag">${c.flag}</span> ${c.name}`;
-      countryList.style.display = 'none';
-      if(c.code === 'US'){
-        stateSelectWrapper.style.display = 'block'; // show state field
-      } else {
-        stateSelectWrapper.style.display = 'none';
-      }
-    }
-    countryOptionsDiv.appendChild(div);
-  });
-}
-renderCountryOptions(countries);
-
-countryBtn.addEventListener('click', ()=>{
-  countryList.style.display = countryList.style.display==='block' ? 'none':'block';
-  countryFilter.value = '';
-  renderCountryOptions(countries);
-  countryFilter.focus();
-});
-countryFilter.addEventListener('input', ()=>{
-  const q = countryFilter.value.toLowerCase();
-  renderCountryOptions(countries.filter(c=>c.name.toLowerCase().includes(q)));
-});
-document.addEventListener('click',(e)=>{
-  if(!e.target.closest('#countrySelect')) countryList.style.display='none';
-});
-
-// ---------------- STATE DROPDOWN ----------------
-const states = [
-  { code:'CA', name:'California' },
-  { code:'NY', name:'New York' },
-  { code:'TX', name:'Texas' },
-  { code:'FL', name:'Florida' },
-  { code:'IL', name:'Illinois' },
-  // add more states here
-];
-
-const stateBtn = document.getElementById('stateBtn');
-const stateList = document.getElementById('stateList');
-const stateOptionsDiv = document.getElementById('stateOptions');
-const stateFilter = document.getElementById('stateFilter');
-
-function renderStateOptions(list){
-  stateOptionsDiv.innerHTML = '';
-  list.forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'dropdown-item';
-    div.textContent = s.name;
-    div.onclick = () => {
-      stateBtn.textContent = s.name;
-      stateList.style.display = 'none';
-    }
-    stateOptionsDiv.appendChild(div);
-  });
-}
-renderStateOptions(states);
-
-stateBtn.addEventListener('click', ()=>{
-  stateList.style.display = stateList.style.display==='block' ? 'none':'block';
-  stateFilter.value = '';
-  renderStateOptions(states);
-  stateFilter.focus();
-});
-stateFilter.addEventListener('input', ()=>{
-  const q = stateFilter.value.toLowerCase();
-  renderStateOptions(states.filter(s=>s.name.toLowerCase().includes(q)));
-});
-document.addEventListener('click',(e)=>{
-  if(!e.target.closest('#stateSelectWrapper')) stateList.style.display='none';
-});
-</script>
-<script>
-  const codeSelect = document.getElementById("code");
-
-  countries.forEach(c => {
-    const option = document.createElement("option");
-    option.value = c.pCode;                           // value = country code
-    option.textContent = `(${c.pCode}) ${c.name}`;    // text = (code) country name
-    codeSelect.appendChild(option);
-  });
-  codeSelect.value = "+880"; // Bangladesh default
-</script> -->
-
-
-
-
-<script>
-// ---------------- COUNTRY + STATES ----------------
-const countries = [
-  { code:'BD', name:'Bangladesh', flag:'🇧🇩', pCode:"+880" },
-  { code:'IN', name:'India', flag:'🇮🇳', pCode:"+91" },
-  { 
-    code:'US',
-    name:'United States',
-    flag:'🇺🇸',
-    pCode:"+1",
-    states: [
-      { code:'CA', name:'California' },
-      { code:'NY', name:'New York' },
-      { code:'TX', name:'Texas' },
-      { code:'FL', name:'Florida' },
-      { code:'IL', name:'Illinois' },
-    ]
-  },
-  { code:'GB', name:'United Kingdom', flag:'🇬🇧', pCode:"+44" },
-  { code:'CA', name:'Canada', flag:'🇨🇦', pCode:"+1" },
-  { code:'AU', name:'Australia', flag:'🇦🇺', pCode:"+61" },
-  { code:'BE', name:'Belgium', flag:'🇧🇪', pCode:"+32" },
-  { code:'BM', name:'Bermuda', flag:'🇧🇲', pCode:"+1" },
-  { code:'BT', name:'Bhutan', flag:'🇧🇹', pCode:"+975" },
-  { code:'BR', name:'Brazil', flag:'🇧🇷', pCode:"+55" },
-];
-
-// ---------------- COUNTRY DROPDOWN ----------------
-const countryBtn = document.getElementById('countryBtn');
-const countryList = document.getElementById('countryList');
-const countryOptionsDiv = document.getElementById('countryOptions');
-const countryFilter = document.getElementById('countryFilter');
-const stateSelectWrapper = document.getElementById('stateSelectWrapper');
-
-function renderCountryOptions(list){
-  countryOptionsDiv.innerHTML = '';
-  list.forEach(c => {
-    const div = document.createElement('div');
-    div.className = 'dropdown-item';
-    div.innerHTML = `<span class="flag">${c.flag}</span> ${c.name}`;
-    div.onclick = () => {
-      countryBtn.innerHTML = `<span class="flag">${c.flag}</span> ${c.name}`;
-      countryList.style.display = 'none';
-
-      if(c.states){ // যদি states থাকে
-        stateSelectWrapper.style.display = 'block';
-        renderStateOptions(c.states);
-      } else {
-        stateSelectWrapper.style.display = 'none';
-      }
-    }
-    countryOptionsDiv.appendChild(div);
-  });
-}
-renderCountryOptions(countries);
-
-countryBtn.addEventListener('click', ()=>{
-  countryList.style.display = countryList.style.display==='block' ? 'none':'block';
-  countryFilter.value = '';
-  renderCountryOptions(countries);
-  countryFilter.focus();
-});
-countryFilter.addEventListener('input', ()=>{
-  const q = countryFilter.value.toLowerCase();
-  renderCountryOptions(countries.filter(c=>c.name.toLowerCase().includes(q)));
-});
-document.addEventListener('click',(e)=>{
-  if(!e.target.closest('#countrySelect')) countryList.style.display='none';
-});
-
-// ---------------- STATE DROPDOWN ----------------
-const stateBtn = document.getElementById('stateBtn');
-const stateList = document.getElementById('stateList');
-const stateOptionsDiv = document.getElementById('stateOptions');
-const stateFilter = document.getElementById('stateFilter');
-
-function renderStateOptions(list){
-  stateOptionsDiv.innerHTML = '';
-  list.forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'dropdown-item';
-    div.textContent = s.name;
-    div.onclick = () => {
-      stateBtn.textContent = s.name;
-      stateList.style.display = 'none';
-    }
-    stateOptionsDiv.appendChild(div);
-  });
-}
-
-stateBtn.addEventListener('click', ()=>{
-  stateList.style.display = stateList.style.display==='block' ? 'none':'block';
-  stateFilter.value = '';
-  stateFilter.focus();
-});
-stateFilter.addEventListener('input', ()=>{
-  const q = stateFilter.value.toLowerCase();
-  const usa = countries.find(c=>c.code==='US');
-  if(usa && usa.states){
-    renderStateOptions(usa.states.filter(s=>s.name.toLowerCase().includes(q)));
-  }
-});
-document.addEventListener('click',(e)=>{
-  if(!e.target.closest('#stateSelectWrapper')) stateList.style.display='none';
-});
-
-// ---------------- PHONE CODE SELECT ----------------
-const codeSelect = document.getElementById("code");
-countries.forEach(c => {
-  const option = document.createElement("option");
-  option.value = c.pCode;
-  option.textContent = `(${c.pCode}) ${c.name}`;
-  codeSelect.appendChild(option);
-});
-codeSelect.value = "+880"; // Bangladesh default
-</script>
-
 </body>
 </html>
