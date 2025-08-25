@@ -28,8 +28,7 @@
                         </div>
             </div>
                         
-                        
-                       
+                                               
         </div>
         <div class="ssl-bar top_padding">
                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="17" viewBox="0 0 14 17" fill="none">
@@ -88,7 +87,7 @@
                           </div>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <select id="country" required="">
                             <option value="" hidden=""></option>
                             <option value="Bulgaria" selected="">Bulgaria</option>
@@ -97,8 +96,13 @@
                             <option value="Germany">Germany</option>
                           </select>
                           <label for="country" class="input_label">Country</label>
-                        </div>
-
+                        </div> -->
+<div class="form-group">
+  <select id="country" required>
+    <option value="" hidden>Select country</option>
+  </select>
+  <label for="country" class="input_label">Country</label>
+</div>
                         <div class="row">
                           <div class="form-group one-third">
                             <select id="code" required="">
@@ -284,5 +288,42 @@
         </div> 
     </section>
     <script src="./assets/js/app.js"></script>
+
+    <script>
+const countries = [
+  { code:'BD', name:'Bangladesh', flag:'🇧🇩', pCode:"+880" },
+  { code:'IN', name:'India', flag:'🇮🇳', pCode:"+91" },
+  { 
+    code:'US',
+    name:'United States',
+    flag:'🇺🇸',
+    pCode:"+1",
+    states: [
+      { code:'CA', name:'California' },
+      { code:'NY', name:'New York' },
+      { code:'TX', name:'Texas' },
+      { code:'FL', name:'Florida' },
+      { code:'IL', name:'Illinois' },
+    ]
+  },
+  { code:'GB', name:'United Kingdom', flag:'🇬🇧', pCode:"+44" },
+  { code:'CA', name:'Canada', flag:'🇨🇦', pCode:"+1" },
+  { code:'AU', name:'Australia', flag:'🇦🇺', pCode:"+61" },
+  { code:'BE', name:'Belgium', flag:'🇧🇪', pCode:"+32" },
+  { code:'BM', name:'Bermuda', flag:'🇧🇲', pCode:"+1" },
+  { code:'BT', name:'Bhutan', flag:'🇧🇹', pCode:"+975" },
+  { code:'BR', name:'Brazil', flag:'🇧🇷', pCode:"+55" },
+];
+
+const select = document.getElementById("country");
+
+// populate options
+countries.forEach(c => {
+  const option = document.createElement("option");
+  option.value = c.code; // you can also use c.name if needed
+  option.textContent = `${c.flag} ${c.name}`;
+  select.appendChild(option);
+});
+</script>
 </body>
 </html>

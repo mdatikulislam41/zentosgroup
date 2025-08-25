@@ -241,60 +241,13 @@
                 </div>
                 <div class="row">
                   <div class="form-group one-third">
-                    <div id="code-select" class="custom-select">
-                      <input
-                        id="code-input"
-                        type="search"
-                        placeholder="Select code"
-                        autocomplete="off"
-                        class="select-display"
-                        style="
-                          width: 100%;
-                          box-sizing: border-box;
-                          padding: 12px;
-                          border: 1px solid #e2e2e2;
-                          border-radius: 8px;
-                          background: #fff;
-                        "
-                      />
-                      <div
-                        id="code-panel"
-                        class="select-panel"
-                        style="position: relative"
-                      >
-                        <div
-                          id="code-panel-inner"
-                          style="
-                            display: none;
-                            position: absolute;
-                            z-index: 20;
-                            left: 0;
-                            right: 0;
-                            background: #fff;
-                            border: 1px solid #e2e2e2;
-                            border-radius: 8px;
-                            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-                            margin-top: 6px;
-                          "
-                        >
-                          <ul
-                            id="code-list"
-                            style="
-                              list-style: none;
-                              margin: 0;
-                              padding: 6px 0;
-                              max-height: 220px;
-                              overflow: auto;
-                            "
-                          ></ul>
-                        </div>
-                      </div>
-                    </div>
-                    <select
-                      id="code"
-                      required=""
-                      style="display: none"
-                    ></select>
+                    <select id="code" required="">
+                      <option value="" hidden=""></option>
+                      <option value="+359" selected="">(+359) Bulgaria</option>
+                      <option value="+1">(+1) USA</option>
+                      <option value="+44">(+44) UK</option>
+                      <option value="+49">(+49) Germany</option>
+                    </select>
                     <label for="code" class="input_label">Code</label>
                   </div>
 
@@ -506,5 +459,560 @@
       </div>
     </section>
     <script src="./assets/js/app.js"></script>
+
+    <script>
+      const countries = [
+        { code: "BD", name: "Bangladesh", flag: "🇧🇩", pCode: "+880" },
+        { code: "IN", name: "India", flag: "🇮🇳", pCode: "+91" },
+        {
+          code: "US",
+          name: "United States",
+          flag: "🇺🇸",
+          pCode: "+1",
+          states: [
+            { code: "CA", name: "California" },
+            { code: "NY", name: "New York" },
+            { code: "TX", name: "Texas" },
+            { code: "FL", name: "Florida" },
+            { code: "IL", name: "Illinois" },
+          ],
+        },
+        { code: "GB", name: "United Kingdom", flag: "🇬🇧", pCode: "+44" },
+        { code: "CA", name: "Canada", flag: "🇨🇦", pCode: "+1" },
+        { code: "AU", name: "Australia", flag: "🇦🇺", pCode: "+61" },
+        { code: "BE", name: "Belgium", flag: "🇧🇪", pCode: "+32" },
+        { code: "BM", name: "Bermuda", flag: "🇧🇲", pCode: "+1" },
+        { code: "BT", name: "Bhutan", flag: "🇧🇹", pCode: "+975" },
+        { code: "BR", name: "Brazil", flag: "🇧🇷", pCode: "+55" },
+      ];
+
+      const select = document.getElementById("country");
+      const stateGroup = document.getElementById("state-group");
+      const stateSelect = document.getElementById("state");
+      const countrySelectEl = document.getElementById("country-select");
+      const countryInput = document.getElementById("country-input");
+      const countryPanelInner = document.getElementById("country-panel-inner");
+      const countryList = document.getElementById("country-list");
+      const stateSelectEl = document.getElementById("state-select");
+      const stateInput = document.getElementById("state-input");
+      const statePanelInner = document.getElementById("state-panel-inner");
+      const stateList = document.getElementById("state-list");
+
+      // Populate all countries (ISO 3166-1 alpha-2)
+      const isoCountryCodes = [
+        "AF",
+        "AX",
+        "AL",
+        "DZ",
+        "AS",
+        "AD",
+        "AO",
+        "AI",
+        "AQ",
+        "AG",
+        "AR",
+        "AM",
+        "AW",
+        "AU",
+        "AT",
+        "AZ",
+        "BS",
+        "BH",
+        "BD",
+        "BB",
+        "BY",
+        "BE",
+        "BZ",
+        "BJ",
+        "BM",
+        "BT",
+        "BO",
+        "BQ",
+        "BA",
+        "BW",
+        "BV",
+        "BR",
+        "IO",
+        "BN",
+        "BG",
+        "BF",
+        "BI",
+        "CV",
+        "KH",
+        "CM",
+        "CA",
+        "KY",
+        "CF",
+        "TD",
+        "CL",
+        "CN",
+        "CX",
+        "CC",
+        "CO",
+        "KM",
+        "CG",
+        "CD",
+        "CK",
+        "CR",
+        "CI",
+        "HR",
+        "CU",
+        "CW",
+        "CY",
+        "CZ",
+        "DK",
+        "DJ",
+        "DM",
+        "DO",
+        "EC",
+        "EG",
+        "SV",
+        "GQ",
+        "ER",
+        "EE",
+        "SZ",
+        "ET",
+        "FK",
+        "FO",
+        "FJ",
+        "FI",
+        "FR",
+        "GF",
+        "PF",
+        "TF",
+        "GA",
+        "GM",
+        "GE",
+        "DE",
+        "GH",
+        "GI",
+        "GR",
+        "GL",
+        "GD",
+        "GP",
+        "GU",
+        "GT",
+        "GG",
+        "GN",
+        "GW",
+        "GY",
+        "HT",
+        "HM",
+        "VA",
+        "HN",
+        "HK",
+        "HU",
+        "IS",
+        "IN",
+        "ID",
+        "IR",
+        "IQ",
+        "IE",
+        "IM",
+        "IL",
+        "IT",
+        "JM",
+        "JP",
+        "JE",
+        "JO",
+        "KZ",
+        "KE",
+        "KI",
+        "KP",
+        "KR",
+        "KW",
+        "KG",
+        "LA",
+        "LV",
+        "LB",
+        "LS",
+        "LR",
+        "LY",
+        "LI",
+        "LT",
+        "LU",
+        "MO",
+        "MG",
+        "MW",
+        "MY",
+        "MV",
+        "ML",
+        "MT",
+        "MH",
+        "MQ",
+        "MR",
+        "MU",
+        "YT",
+        "MX",
+        "FM",
+        "MD",
+        "MC",
+        "MN",
+        "ME",
+        "MS",
+        "MA",
+        "MZ",
+        "MM",
+        "NA",
+        "NR",
+        "NP",
+        "NL",
+        "NC",
+        "NZ",
+        "NI",
+        "NE",
+        "NG",
+        "NU",
+        "NF",
+        "MK",
+        "MP",
+        "NO",
+        "OM",
+        "PK",
+        "PW",
+        "PS",
+        "PA",
+        "PG",
+        "PY",
+        "PE",
+        "PH",
+        "PN",
+        "PL",
+        "PT",
+        "PR",
+        "QA",
+        "RE",
+        "RO",
+        "RU",
+        "RW",
+        "BL",
+        "SH",
+        "KN",
+        "LC",
+        "MF",
+        "PM",
+        "VC",
+        "WS",
+        "SM",
+        "ST",
+        "SA",
+        "SN",
+        "RS",
+        "SC",
+        "SL",
+        "SG",
+        "SX",
+        "SK",
+        "SI",
+        "SB",
+        "SO",
+        "ZA",
+        "GS",
+        "SS",
+        "ES",
+        "LK",
+        "SD",
+        "SR",
+        "SJ",
+        "SE",
+        "CH",
+        "SY",
+        "TW",
+        "TJ",
+        "TZ",
+        "TH",
+        "TL",
+        "TG",
+        "TK",
+        "TO",
+        "TT",
+        "TN",
+        "TR",
+        "TM",
+        "TC",
+        "TV",
+        "UG",
+        "UA",
+        "AE",
+        "GB",
+        "US",
+        "UM",
+        "UY",
+        "UZ",
+        "VU",
+        "VE",
+        "VN",
+        "VG",
+        "VI",
+        "WF",
+        "EH",
+        "YE",
+        "ZM",
+        "ZW",
+      ];
+
+      const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+      function codeToFlag(code) {
+        return code
+          .toUpperCase()
+          .replace(/./g, (char) =>
+            String.fromCodePoint(char.charCodeAt(0) + 127397)
+          );
+      }
+
+      // Clear existing options (keep placeholder via render function)
+      select.innerHTML = "";
+
+      const countryItems = isoCountryCodes.map((code) => ({
+        code,
+        name: regionNames.of(code) || code,
+        flag: codeToFlag(code),
+      }));
+
+      function renderCountryOptions(list, preserveValue = true) {
+        const previousValue = preserveValue ? select.value : "";
+        select.innerHTML = "";
+        const ph = document.createElement("option");
+        ph.value = "";
+        ph.hidden = true;
+        ph.textContent = "Select country";
+        select.appendChild(ph);
+
+        list
+          .slice()
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .forEach((c) => {
+            const option = document.createElement("option");
+            option.value = c.code;
+            option.textContent = `${c.flag} ${c.name}`;
+            select.appendChild(option);
+          });
+
+        if (
+          preserveValue &&
+          previousValue &&
+          list.some((c) => c.code === previousValue)
+        ) {
+          select.value = previousValue;
+        } else {
+          select.value = "";
+          // Reset state if selection cleared
+          if (typeof updateStateOptions === "function") updateStateOptions();
+        }
+      }
+
+      // Initial render
+      renderCountryOptions(countryItems, false);
+
+      // Custom dropdown behavior (in-panel search)
+      function openCountryPanel() {
+        countryPanelInner.style.display = "block";
+      }
+
+      function closeCountryPanel() {
+        countryPanelInner.style.display = "none";
+        renderCountryList(countryItems);
+      }
+
+      function setSelectedCountry(code) {
+        const item = countryItems.find((c) => c.code === code);
+        if (!item) return;
+        select.value = item.code;
+        countryInput.value = `${item.flag} ${item.name}`;
+        if (typeof updateStateOptions === "function") updateStateOptions();
+      }
+
+      function renderCountryList(list) {
+        countryList.innerHTML = "";
+        list
+          .slice()
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .forEach((c) => {
+            const li = document.createElement("li");
+            li.textContent = `${c.flag} ${c.name}`;
+            li.setAttribute("data-code", c.code);
+            li.style.padding = "8px 12px";
+            li.style.cursor = "pointer";
+            li.addEventListener("click", () => {
+              setSelectedCountry(c.code);
+              closeCountryPanel();
+            });
+            li.addEventListener(
+              "mouseenter",
+              () => (li.style.background = "#f7f7f7")
+            );
+            li.addEventListener(
+              "mouseleave",
+              () => (li.style.background = "transparent")
+            );
+            countryList.appendChild(li);
+          });
+      }
+
+      // Initial custom list render and default display
+      renderCountryList(countryItems);
+      countryInput.addEventListener("focus", () => {
+        const isOpen =
+          countryPanelInner.style.display !== "none" &&
+          countryPanelInner.style.display !== "";
+        if (isOpen) {
+          closeCountryPanel();
+        } else {
+          openCountryPanel();
+        }
+      });
+      countryInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openCountryPanel();
+        }
+      });
+      countryInput.addEventListener("input", () => {
+        const q = countryInput.value.trim().toLowerCase();
+        const filtered = q
+          ? countryItems.filter(
+              (c) =>
+                c.name.toLowerCase().includes(q) ||
+                c.code.toLowerCase().includes(q)
+            )
+          : countryItems;
+        renderCountryList(filtered);
+      });
+      document.addEventListener("click", (e) => {
+        if (!countrySelectEl.contains(e.target)) {
+          closeCountryPanel();
+        }
+      });
+
+      // Sync display if a selection exists
+      if (select.value) {
+        setSelectedCountry(select.value);
+      }
+
+      function updateStateOptions() {
+        const selectedCode = select.value;
+        const country = countries.find((c) => c.code === selectedCode);
+
+        // reset state select
+        stateSelect.innerHTML = "";
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.hidden = true;
+        placeholder.textContent = "Select state";
+        stateSelect.appendChild(placeholder);
+
+        if (country && Array.isArray(country.states) && country.states.length) {
+          country.states.forEach((s) => {
+            const opt = document.createElement("option");
+            opt.value = s.code;
+            opt.textContent = s.name;
+            stateSelect.appendChild(opt);
+          });
+          stateGroup.style.display = "block";
+          stateSelect.required = true;
+          // Reset custom state input and list on country change
+          stateInput.value = "";
+          renderStateList(country.states);
+        } else {
+          stateGroup.style.display = "none";
+          stateSelect.required = false;
+          stateInput && (stateInput.value = "");
+          stateList && (stateList.innerHTML = "");
+        }
+      }
+
+      select.addEventListener("change", updateStateOptions);
+
+      // State custom dropdown behavior
+      function openStatePanel() {
+        statePanelInner.style.display = "block";
+      }
+
+      function closeStatePanel() {
+        statePanelInner.style.display = "none";
+        const selectedCode = select.value;
+        const country = countries.find((c) => c.code === selectedCode);
+        const list =
+          country && Array.isArray(country.states) ? country.states : [];
+        renderStateList(list);
+      }
+
+      function setSelectedState(code) {
+        const selectedCode = select.value;
+        const country = countries.find((c) => c.code === selectedCode);
+        if (!country || !Array.isArray(country.states)) return;
+        const item = country.states.find((s) => s.code === code);
+        if (!item) return;
+        stateSelect.value = item.code;
+        stateInput.value = item.name;
+      }
+
+      function renderStateList(list) {
+        stateList.innerHTML = "";
+        list
+          .slice()
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .forEach((s) => {
+            const li = document.createElement("li");
+            li.textContent = s.name;
+            li.setAttribute("data-code", s.code);
+            li.style.padding = "8px 12px";
+            li.style.cursor = "pointer";
+            li.addEventListener("click", () => {
+              setSelectedState(s.code);
+              closeStatePanel();
+            });
+            li.addEventListener(
+              "mouseenter",
+              () => (li.style.background = "#f7f7f7")
+            );
+            li.addEventListener(
+              "mouseleave",
+              () => (li.style.background = "transparent")
+            );
+            stateList.appendChild(li);
+          });
+      }
+
+      stateInput &&
+        stateInput.addEventListener("focus", () => {
+          const isOpen =
+            statePanelInner.style.display !== "none" &&
+            statePanelInner.style.display !== "";
+          if (isOpen) {
+            closeStatePanel();
+          } else {
+            openStatePanel();
+          }
+        });
+      stateInput &&
+        stateInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openStatePanel();
+          }
+        });
+      stateInput &&
+        stateInput.addEventListener("input", () => {
+          const q = stateInput.value.trim().toLowerCase();
+          const selectedCode = select.value;
+          const country = countries.find((c) => c.code === selectedCode);
+          const list =
+            country && Array.isArray(country.states) ? country.states : [];
+          const filtered = q
+            ? list.filter(
+                (s) =>
+                  s.name.toLowerCase().includes(q) ||
+                  s.code.toLowerCase().includes(q)
+              )
+            : list;
+          renderStateList(filtered);
+        });
+      document.addEventListener("click", (e) => {
+        if (stateSelectEl && !stateSelectEl.contains(e.target)) {
+          closeStatePanel();
+        }
+      });
+    </script>
   </body>
 </html>
